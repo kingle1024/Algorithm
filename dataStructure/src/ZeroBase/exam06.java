@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class exam06 {
     public static void main(String[] args) {
+        // 가상 대선 당선 시뮬레이션 프로그램
         Random r = new Random();
 
         int voteArr[] = {0, 0, 0, 0};
@@ -43,9 +44,17 @@ public class exam06 {
             if(max < voteArr[i]) max = voteArr[i];
         }
 
+        ArrayList<Integer> array = new ArrayList<>();
+        // 동일한 표의 당선자가 있는지 확인하는 로직
+        getOverlap(array, voteArr, max);
+
+        // 출력 로직
+        getPrint(array, voteName);
+    }
+    public static void getOverlap(ArrayList<Integer> array, int voteArr[], int max){
         // 동일한 표의 당선자가 있는지 확인하는 로직
         int voteDuplication = 0;
-        ArrayList<Integer> array = new ArrayList<>();
+
         for(int i=0; i<voteArr.length; i++){
             if(voteDuplication > 1){
                 break;
@@ -55,7 +64,8 @@ public class exam06 {
                 voteDuplication++;
             }
         }
-
+    }
+    public static void getPrint(ArrayList<Integer> array, String voteName[]){
         // 출력 로직
         if(array.size() > 1){
             System.out.print("[투표 결과] 중복된 당선인이 존재합니다.(");
@@ -71,6 +81,5 @@ public class exam06 {
         }else{
             System.out.println("[투표 결과] 당선인: "+voteName[array.get(0)]);
         }
-
     }
 }
