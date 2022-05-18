@@ -18,6 +18,21 @@ public class exam05 {
         String startDateOfWeek = String.valueOf(date.getDayOfWeek());
 
         int mmDay = -1;
+        mmDay = getLeapYear(yyyy, mm, mmDay);
+
+        // 날짜 형식 맞추기 Tab 입력
+        for(int i=0; i < getStartDateOfWeek(startDateOfWeek); i++){
+            System.out.printf("\t");
+        }
+        // 날짜(dd) 출력
+        for(int i = 1; i<=mmDay; i++){
+            if((i+getStartDateOfWeek(startDateOfWeek)) %7 == 0) System.out.printf("%02d\t\n", i);
+            else{
+                System.out.printf("%02d\t", i);
+            }
+        }
+    }
+    public static int getLeapYear(int yyyy, int mm, int mmDay){
         if(mm == 2){
             if(yyyy %4 == 0){ // 윤년 계산
                 if(yyyy %400 == 0){
@@ -35,18 +50,7 @@ public class exam05 {
         }else{
             mmDay = 31;
         }
-
-        // 날짜 형식 맞추기 Tab 입력
-        for(int i=0; i < getStartDateOfWeek(startDateOfWeek); i++){
-            System.out.printf("\t");
-        }
-        // 날짜(dd) 출력
-        for(int i = 1; i<=mmDay; i++){
-            if((i+getStartDateOfWeek(startDateOfWeek)) %7 == 0) System.out.printf("%02d\t\n", i);
-            else{
-                System.out.printf("%02d\t", i);
-            }
-        }
+        return mmDay;
     }
 
     public static int getStartDateOfWeek(String startDateOfWeek){
