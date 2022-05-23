@@ -1,43 +1,44 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Part2_Practice01 {
     public static void main(String[] args) {
         // 파스칼의 삼각형
-        int result[][] = new int[5][];
-        List<List> arrayList = new ArrayList<List>();
-        List<Integer> array = new ArrayList();
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
+        int result[][] = new int[input][];
+        result[0] = new int[]{1};
         int arr[] = new int[]{1};
         int idx = 1;
 
+        result = pascal(input, arr, idx, result);
+
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[i].length; j++) {
+                System.out.print(result[i][j]);
+            }
+            System.out.println();
+        }
+
+    }
+    static int[] solution(int arr[]){
+        int resultArr[] = new int[arr.length+1];
+        resultArr[0] = 1;
+        resultArr[resultArr.length - 1] = 1;
+
+        for(int i=1; i<arr.length; i++){
+            resultArr[i] = arr[i-1] +arr[i];
+        }
+        return resultArr;
+    }
+    static int[][] pascal(int input, int[] arr, int idx, int[][] result){
         while(true){
             if(idx == input) {
                 break;
             }
-            array.add(solution(arr));
+            arr = solution(arr);
+            result[idx] = arr;
             idx++;
         }
-        for (int i = 0; i < arr.length; i++) {
-//            System.out.println(arr[i]);
-//            result[i] = arr[i];
-            arrayList.add((List) array.get(i));
-        }
-        for(Object a : array){
-            System.out.println(a);
-        }
+        return result;
     }
-    static List solution(int test[]){
-        int arr[] = new int[test.length+1];
-        arr[0] = 1;
-        arr[arr.length-1] = 1;
-        for(int i=1; i<test.length; i++){
-            arr[i] = test[i-1] +test[i];
-        }
-        return Arrays.asList(arr);
-    }
-
 }
