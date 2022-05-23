@@ -9,6 +9,8 @@ public class Part2_Practice01_02 {
      */
 
     public static void solution(int[] arr){
+        if(arr == null || arr.length < 2) return;
+
         int lastNum;
         int swap;
         boolean check = false;
