@@ -13,7 +13,29 @@ public class Part2_Practice01_04 {
         System.out.println(solution(2));
         System.out.println(solution(61));
     }
+    static boolean solution2(int num){
+        HashSet<Integer> hash = new HashSet();
+        boolean result = false;
+        int hashSize = 0;
+        int checkRecursion = num;
+        while(true){
+//            System.out.println("[1] "+checkRecursion +" "+hash.size());
+            hashSize = hash.size();
+            checkRecursion = happyNumber(checkRecursion);
+            hash.add(checkRecursion);
+//            System.out.println("[2] "+hash.size());
+            if(hashSize == hash.size()){
+//                System.out.println("[3] "+hashSize +" "+hash.size());
+                break;
+            }else if(checkRecursion == 1){
+                result = true;
+                break;
+            }
 
+        }
+
+        return result;
+    }
     static boolean solution(int num){
         boolean result = false;
         int recursionNum = num;
