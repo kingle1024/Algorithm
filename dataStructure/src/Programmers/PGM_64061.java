@@ -1,8 +1,10 @@
+package Programmers;
+
+import java.util.Stack;
 class PGM_64061{
     public static void main(String[] args) {
 
     }
-    import java.util.Stack;
     class Solution {
         public int solution(int[][] board, int[] moves) {
             int answer = 0;

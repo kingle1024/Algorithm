@@ -1,4 +1,6 @@
-public class coding03 {
+package ZeroBase;
+
+public class coding_01_03 {
     public static void main(String[] args) {
 
     }

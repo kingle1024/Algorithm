@@ -1,6 +1,8 @@
+package ZeroBase;
+
 import java.util.ArrayList;
 
-public class coding02 {
+public class coding01_02 {
     public static void main(String[] args) {
 
     }

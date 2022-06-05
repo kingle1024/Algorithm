@@ -1,6 +1,8 @@
+package ZeroBase;
+
 import java.util.Arrays;
 
-public class test02 {
+public class coding02_02 {
     /*
     컴퓨터는 정수를 표현할 때, 자료형에 따라 표현 가능한 숫자의 범위가 정해져있다. 기산이는 이러한 한계를 해결하고자, 숫자를 배열로 표현하기로 하였다.
 

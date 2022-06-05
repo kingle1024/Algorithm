@@ -1,3 +1,7 @@
+package Programmers;
+
+import java.util.*;
+
 class PGM_42889{
     public static void main(String[] args) {
 //        solution(20, new int[]{1,2,2,1,3,21});
@@ -30,12 +34,12 @@ class PGM_42889{
         }
 
         // Map.Entry 리스트 작성
-        List<Entry<Integer, Float>> list_entries = new ArrayList<Entry<Integer, Float>>(map.entrySet());
+        List<Map.Entry<Integer, Float>> list_entries = new ArrayList<Map.Entry<Integer, Float>>(map.entrySet());
 
         // 비교함수 Comparator를 사용하여 오름차순으로 정렬
-        Collections.sort(list_entries, new Comparator<Entry<Integer, Float>>() {
+        Collections.sort(list_entries, new Comparator<Map.Entry<Integer, Float>>() {
             // compare로 값을 비교
-            public int compare(Entry<Integer, Float> obj1, Entry<Integer, Float> obj2) {
+            public int compare(Map.Entry<Integer, Float> obj1, Map.Entry<Integer, Float> obj2) {
                 // 오름 차순 정렬
                 return obj2.getValue().compareTo(obj1.getValue());
             }
@@ -44,7 +48,7 @@ class PGM_42889{
         // 결과 출력
         int checkI=0;
 
-        for(Entry<Integer, Float> entry : list_entries) {
+        for(Map.Entry<Integer, Float> entry : list_entries) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
             answer[checkI] = entry.getKey()+1;
             checkI++;

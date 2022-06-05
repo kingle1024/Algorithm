@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class coding04 {
+public class coding01_04 {
     public static void main(String[] args) {
         System.out.println(solution("ULURRDLLU"));
         System.out.println(solution("LULLLLLLU"));

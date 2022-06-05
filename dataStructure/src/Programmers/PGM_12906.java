@@ -1,3 +1,5 @@
+package Programmers;
+
 import java.util.ArrayList;
 
 //  같은 숫자는 싫어

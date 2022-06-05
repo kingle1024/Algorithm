@@ -1,3 +1,7 @@
+package ZeroBase;
+
+import java.util.Arrays;
+
 public class coding02_01 {
     /*
     촘촘이는 무엇이든 연속으로 가득찬 것을 좋아한다. 이번에 촘촘이가 빠진 취미는 빠짐없이 연속된 숫자를 모으는 것이다.
@@ -17,9 +21,9 @@ public class coding02_01 {
 
 //        solution("aabbaccc");
 //        solution("ababcdcdababcdcd");
-        solution("abcabcdede");
+        solution(new String[]{"abcabcdede"});
     }
-    public int solution(int[] numbers) {
+    public static int solution(String[] numbers) {
         int answer = 0;
         Arrays.sort(numbers);
         boolean check = true;
@@ -27,7 +31,7 @@ public class coding02_01 {
         for(int i=0; i<numbers.length-1; i++){
             if(numbers[i+1] != numbers[i]+1){
                 check = false;
-                lowNum = numbers[i]+1;
+                lowNum = Integer.parseInt(numbers[i]+1);
                 break;
             }
         }

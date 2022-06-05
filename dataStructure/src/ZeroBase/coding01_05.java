@@ -1,6 +1,8 @@
+package ZeroBase;
+
 import java.util.ArrayList;
 
-public class coding05 {
+public class coding01_05 {
     public static void main(String[] args) {
 
         System.out.println(solution(8, 4, 7));
