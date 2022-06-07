@@ -1,6 +1,7 @@
 package ZeroBase.Class;
 class Node{
     int data;
+    String sData;
     Node next;
 
     Node(){}
@@ -8,12 +9,22 @@ class Node{
         this.data = data;
         this.next = next;
     }
+    Node(String data, Node next){
+        this.sData = data;
+        this.next = next;
+    }
+
 }
 class LinkedList{
     Node head;
+    char alphabet;
     LinkedList() {}
     LinkedList(Node node){
         this.head = node;
+    }
+    LinkedList(Node node, char alphabet){
+        this.head = node;
+        this.alphabet = alphabet;
     }
 
     // 연결 리스트 비어있는지 확인
@@ -26,6 +37,17 @@ class LinkedList{
 
     // 연결 리스트의 맨 뒤에 데이터 추가
     public void addData(int data){
+        if(this.head == null){
+            this.head = new Node(data, null);
+        }else{
+            Node cur = this.head;
+            while(cur.next != null){
+                cur = cur.next;
+            }
+            cur.next = new Node(data, null);
+        }
+    }
+    public void addData(String data){
         if(this.head == null){
             this.head = new Node(data, null);
         }else{
@@ -59,6 +81,26 @@ class LinkedList{
 
         }
     }
+    public void removeData(String data){
+        if(this.isEmpty()){
+            System.out.println("List is Empty!");
+            return;
+        }
+        Node cur = this.head;
+        Node pre = cur;
+        while(cur != null){
+            if(cur.sData.equals(data)){
+                if(cur == this.head){
+                    this.head = cur.next;
+                }else{
+                    pre.next = cur.next;
+                }
+                break;
+            }
+            pre = cur;
+            cur = cur.next;
+        }
+    }
     // 연결 리스트에서 데이터 찾기
     public void findData(int data){
         if(this.isEmpty()){
@@ -75,6 +117,21 @@ class LinkedList{
         }
         System.out.println("Data not Found");
     }
+    public void findData(String data){
+        if(this.isEmpty()){
+            System.out.println("List is Empty");
+            return;
+        }
+        Node cur = this.head;
+        while(cur != null){
+            if(cur.sData.equals(data)) {
+                System.out.println("Data exist!");
+                return;
+            }
+            cur = cur.next;
+        }
+        System.out.println("Data not Found");
+    }
 
     // 연결 리스트의 모든 데이터 출력
     public void showData(){
@@ -84,9 +141,22 @@ class LinkedList{
         }
         Node cur = this.head;
         while(cur != null){
-            System.out.println(cur.data);
+            System.out.print(cur.data +" ");
             cur = cur.next;
         }
+        System.out.println();
+    }
+    public void showStrData(){
+        if(this.isEmpty()){
+            System.out.println("List is Empty");
+            return;
+        }
+        Node cur = this.head;
+        while(cur != null){
+            System.out.print(cur.sData +" ");
+            cur = cur.next;
+        }
+        System.out.println();
     }
     public void showDataRemoveDuplicate(){
         Node cur = this.head;
