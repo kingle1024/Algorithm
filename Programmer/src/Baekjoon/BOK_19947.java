@@ -5,49 +5,46 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class BOK_19947 {
-    static long result = 0;
-    static void solution(long H, long Y) throws Exception{
+    static int result = 0;
+    static int origin;
+    static long result2 = 0;
+    static long origin2;
+    static void solution() throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-//        long H = Long.parseLong(st.nextToken());
-//        long Y = Long.parseLong(st.nextToken());
+        int H = Integer.parseInt(st.nextToken());
+        int Y = Integer.parseInt(st.nextToken());
         result = H;
-        recursive(Y);
-        System.out.println(result);
-    }
-    public static void recursive(long n){
-//        System.out.println(result);
-        if(n == 0) return;
-        else if(n % 3 == 0) {
-            result = (long)(result*1.2);
-            n-=3;
-            System.out.println("[1] -3");
-        }else if(n % 3 == 0){
-            result = (long)(result*1.35);
-            n-=5;
-            System.out.println("[2] -5");
-        }else if(n>0 && (n/5 < n/3)){
-            result = (long)(result * 1.2);
-            n-=3;
-            System.out.println("[3] -3");
-        }else if(n>0 && (n/5 > n/3)){
-            result = (long)(result * 1.35);
-            n-=5;
-            System.out.println("[4] -5");
-        }else if(n > 0){
-            result = (long)(result * 1.05);
-            n-=1;
-            System.out.println("[5] -1");
-        }
+        origin = Y;
 
-        recursive(n);
+        System.out.println(dynamic(H, Y));
     }
+    public static int dynamic(int H, int Y){
+        int[]dp = new int[11];
+        dp[0] = H;
+        dp[1] = (int)(H*1.05);
+        dp[2] = (int)(dp[1]*1.05);
+        dp[3] = (int)(H*1.2);
+        int num = Y;
+
+        for(int i=4; i<=Y; i++){
+            dp[i] = (int)(dp[i-1] * 1.05);
+            if(i > 2){
+                dp[i] = Math.max((int)(dp[i-3] * 1.2), dp[i]);
+            }
+            if(i > 4){
+                dp[i] = Math.max((int)(dp[i-5] * 1.35), dp[i]);
+            }
+        }
+        return dp[Y];
+    }
+
     public static void main(String[] args) throws Exception{
-        for(int i=9; i>=1; i--){
-            solution(10000, i);
-            System.out.println();
-        }
-
+//        for(int i=10; i>=0; i--){
+//            solution2(99876, i);
+//            System.out.println();
+//        }
+        solution();
     }
 }
