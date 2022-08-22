@@ -46,6 +46,12 @@ public class BOK_7576 {
 
         // BFS 탐색 시작
         bfs(arr);
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < m; j++) {
+//                System.out.print(map[i][j]+" ");
+//            }
+//            System.out.println();
+//        }
 
         // 탐색 완료 후, 숫자 0이 있으면 모두 익지 않았기 때문에 false 처리해준다.
         boolean isZero = false;
