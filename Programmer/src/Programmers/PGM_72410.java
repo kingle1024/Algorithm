@@ -1,3 +1,5 @@
+package Programmers;
+
 public class PGM_72410 {
     public static void main(String[] args) {
         solution("abcdefghijklmn.p");

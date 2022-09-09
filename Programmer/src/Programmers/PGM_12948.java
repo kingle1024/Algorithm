@@ -1,4 +1,4 @@
-// https://programmers.co.kr/learn/courses/30/lessons/12951
+package Programmers;// https://programmers.co.kr/learn/courses/30/lessons/12951
 
 class PGM_12948{
     public static void main(String[] args) {

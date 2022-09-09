@@ -2,7 +2,7 @@ package Programmers;
 
 import java.util.*;
 // x만큼 간격이 있는 n개의 숫자_https://programmers.co.kr/learn/courses/30/lessons/12954
-public class PGM_49993 {
+class PGM_49993 {
     public static void main(String[] args) {
         // https://mozzioi.tistory.com/99
         String skill = "CBDK";
@@ -14,7 +14,7 @@ public class PGM_49993 {
 //        String[] skill_tress = {"CDB"};
         System.out.println(solution(skill, skill_tress));
     }
-    public static long[] solution(int x, int n) {
+    public static long solution(String skill, String skill_trees[]) {
         // https://programmers.co.kr/skill_checks/358606?challenge_id=2508
         /*
         선행 스킬이란 어떤 스킬을 배우기 전에 먼저 배워야 하는 스킬을 뜻합니다.

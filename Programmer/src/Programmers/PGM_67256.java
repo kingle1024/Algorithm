@@ -1,3 +1,4 @@
+package Programmers;
 
 public class PGM_67256 {
     public static void main(String[] args) {

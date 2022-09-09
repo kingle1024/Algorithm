@@ -1,3 +1,5 @@
+package Programmers;
+
 public class PGM_12899 {
     public static void main(String[] args) {
         int n = 30;
