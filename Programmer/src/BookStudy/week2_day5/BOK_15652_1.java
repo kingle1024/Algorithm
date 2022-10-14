@@ -16,9 +16,9 @@ public class BOK_15652_1 {
         n = Integer.parseInt(st.nextToken()); // n까지 진행
         m = Integer.parseInt(st.nextToken()); // 자릿수
         arr = new int[m];
+
         visited = new boolean[n+1];
         recur(0);
-
     }
     public static void recur(int depth){
         if(depth == m){
