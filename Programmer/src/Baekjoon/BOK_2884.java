@@ -22,6 +22,7 @@ public class BOK_2884 {
 //        System.out.println(totalMM);
         int reusltHH = totalMM/60;
         int resultMM = totalMM - (reusltHH * 60);
+        resultMM = totalMM%60;
         System.out.println(reusltHH + " " + resultMM);
     }
 }
