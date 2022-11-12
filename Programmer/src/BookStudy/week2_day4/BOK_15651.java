@@ -1,4 +1,4 @@
-package test;
+package BookStudy.week2_day4;
 
 import java.io.*;
 import java.util.StringTokenizer;
