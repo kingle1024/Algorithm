@@ -39,7 +39,7 @@ public class BOK_2775 {
             }
         }
 //        System.out.println(dp);
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < N; i++) {
             System.out.println(dp[result[i][0]][result[i][1]-1]);
         }
 
