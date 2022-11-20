@@ -3,43 +3,66 @@ package Baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class BOK_1260 {
-    static int[][] graph;
+    public static void main(String[] args) throws IOException {
+        solution();
+    }
+    static int[][] map;
+    static boolean[] visited;
     static int N;
     static int M;
-    static int V;
-    static StringBuffer sb = new StringBuffer();
-    static boolean[] dfsVisited;
-    public static void main(String[] args) throws IOException {
+    public static void solution() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken()); // 최대 숫자
-        M = Integer.parseInt(st.nextToken()); // for문 갯수
-        V = Integer.parseInt(st.nextToken()); // 탐색 시작 위치
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        int start = Integer.parseInt(st.nextToken());
 
-        graph = new int[N+1][N+1];
-        dfsVisited = new boolean[N+1];
-        for(int i=0; i<M; i++){
-            StringTokenizer st2 = new StringTokenizer(br.readLine());
-            int x = Integer.parseInt(st2.nextToken());
-            int y = Integer.parseInt(st2.nextToken());
-            graph[x][y] = graph[y][x] = 1;
+        map = new int[N+1][N+1];
+        visited = new boolean[N+1];
+
+        for (int i = 1; i <= M; i++) {
+            st = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+            map[x][y] = map[y][x] = 1;
         }
+        dfs(start);
+        System.out.println();
 
-        dfs(V);
-        System.out.println(sb);
+        visited = new boolean[N+1];
+
+        bfs(start);
     }
-    static void dfs(int index){
-        dfsVisited[index] = true;
-        sb.append(index+" ");
 
-        for(int i=1; i<=N; i++){
-            if(graph[index][i] == 1 && !dfsVisited[i]) {
-                System.out.println(index);
+    public static void dfs(int x){
+        visited[x] = true;
+        System.out.print(x+" ");
+        for (int i = 1; i <= N; i++) {
+            if(map[x][i] == 1 && !visited[i]){
                 dfs(i);
+            }
+        }
+    }
+
+    public static void bfs(int x){
+        Queue<Integer> q = new LinkedList<>();
+        q.add(x);
+        System.out.print(x +" ");
+        visited[x] = true;
+
+        while(!q.isEmpty()){
+            x = q.poll();
+            for (int i = 1; i <= N; i++) {
+                if(map[x][i] == 1 && !visited[i]){
+                    visited[i] = true;
+                    System.out.print(i +" ");
+                    q.add(i);
+                }
             }
         }
     }
