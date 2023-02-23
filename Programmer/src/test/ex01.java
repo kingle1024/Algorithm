@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class ex01 {
+	// 마스터에서 -> 수정됨 
     public static void main(String[] args) throws IOException {
         solution();
     }
