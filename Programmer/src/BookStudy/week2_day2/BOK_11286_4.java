@@ -11,10 +11,11 @@ public class BOK_11286_4 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
+
         PriorityQueue<int[]> priorityQueue = new PriorityQueue<>(new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                if(o1[0] == o2[0]) {
+                if(o1[0] == o2[0]) { // 앞에 값이 같을 때
                     return Integer.compare(o1[1], o2[1]);
                 }
                 return Integer.compare(o1[0], o2[0]);
