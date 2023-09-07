@@ -14,5 +14,32 @@
 
 ### 다이어그램
 - DFD(Data Flow Diagram)
-- 구성요소
-  - Process(원형), Data Flow(화살표), Data Store(데이터 저장소), External Entity(DFD 외부범위) 
+  - 구성요소
+    - Process(원형), Data Flow(화살표), Data Store(데이터 저장소), External Entity(DFD 외부범위) 
+- 액티비티 다이어그램
+  - UML 표기
+    - 시작점 : 활동의 시작을 의미(검은색 동그라미)
+    - 활동상태 : 처리와 실행을 의미(둥근 사각형)
+    - 종료점 : 처리의 종료(이중 동그라미)
+    - 분기 : 마름모를 사용하여 활동 전이표현(마름모) 
+    - 동기화 막대 : 한가지 이상의 활동이 병행 수행
+- 클래스 다이어그램(Class Diagram)
+  - 클래스 명칭들이 존재 
+- 시퀀스 다이어그램(Sequence Diagram)
+  - 막대기 
+- 유스케이스 다이어그램(Usecase Diagram)
+  - 졸라맨
+- 상태 다이어그램(Statechart Diagram)
+
+
+### 결합도
+- 각 모듈 간에 변경 발생시 영향을 미치는 정도로 낮을 수록 좋다.
+- 자료결합도 -> 스템프 -> 제어 -> 외부 -> 공통 -> 내용결합도 순으로, 자료결합도가 가장 결합도가 낮다. 
+### 응집도
+- 각 모듈이 하나의 기능을 중심으로 잘 뭉쳐져 있는지를 판단하는 것으로 높을수록 좋다.
+- 기능 > 순차 > 통신 > 절차 > 일시 > 논리 > 우연 순으로, 기능이 응집도가 가장 높다.
+
+### 파이썬 
+- 파이썬에서는 recursion 횟수를 1000번으로 제한하고 있다.
+  - RecursionError: maximum recursion depth exceeded in comparison 에러가 발생한다. 
+  - 파이썬에서는 기본 설정값을 변경하지 않으면 
