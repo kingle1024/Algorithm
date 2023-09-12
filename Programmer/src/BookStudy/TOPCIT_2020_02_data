@@ -43,4 +43,5 @@
       FOREIGN KEY(직원번호) REFERENCES 직원,
       FOREIGN KEY(부서코드) REFERENCES 부서
   ) 
-  
+
+
