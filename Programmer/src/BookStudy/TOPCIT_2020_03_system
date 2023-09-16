@@ -64,5 +64,8 @@
 단일 명령어 스트림 - 복수 데이터 스트림(SIMD, Single Instruction Stream, Multiple Data Stream)
 - n개의 프로세싱 유닛으로 구성되나, 동작은 하나의 제어 장치(CU)에 의해 통제됨
 - 모든 처리장치들은 다 동일 연산을 수행하지만, 각각 서로 다른 데이터들을 처리하는, 데이터 관점의 병렬성(data-level parallelism) 구현
-
-
+    명령어 흐름 데이터 흐름    사례
+SISD  1             1         팬티엄, 폰노이만구조
+SIMD  1             다중      Array, 슈퍼컴퓨터
+MISD  다중          1         적용어려움
+MIMD  다중          다중      SMP, MPP, NUMA
