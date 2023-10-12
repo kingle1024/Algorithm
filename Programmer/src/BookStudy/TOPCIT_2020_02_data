@@ -11,7 +11,7 @@
   - DDL -> CREATE, ALTER, DROP, TRUNCATE
   - DCL -> GRANT, REVOKE, COMMIT, ROLLBACK
 - 내부 스키마 
-  - 데이터의 필드의 이름이 무엇이고, 해당 필드는 몇 Byte인지, 인덱스가 등을 정의 
+  - 데이터의 필드의 이름이 무엇이고, 해당 필드는 몇 Byte인지, 인덱스 등을 정의 
   - 물리적 저장 장치의 입장으로 바라봄
 
 ### 인공지능 구현에 사용되는 기술
