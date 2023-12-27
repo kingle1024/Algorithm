@@ -1,0 +1,25 @@
+item21. 인터페이스는 구현하는 쪽을 생각해 설계하라
+
+- 생각할 수 있는 모든 상황에서 불변식을 해치지 않는 디폴트 메서드를 작성하기란 어려운 법이다.
+public interface Interface {
+   // 추상 메서드 
+    void abstractMethodA();
+    void abstractMethodB();
+    void abstractMethodC();
+
+	// default 메서드
+    default int defaultMethodA(){
+    	...
+    }
+}
+
+default method를 사용하면 크게 2가지 충돌 상황이 발생할 수 있습니다.
+
+여러 인터페이스의 디폴트 메서드 간의 충돌
+디폴트 메서드와 상위 클래스의 메서드 간의 충돌
+default method는 인터페이스를 구현한 클래스에서 코드를 구현할 필요가 없을 뿐이지, 구현을 할 수 없는 것이 아닙니다.
+
+즉, 인터페이스를 구현하는 클래스에서 default method를 재정의할 수 있습니다.
+
+따라서, 위와 같은 충돌 상황이 일어나는 클래스에서 defalt method를 재정의하면 충돌 상황을 해결할 수 있습니다.
+
