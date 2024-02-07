@@ -1,0 +1,22 @@
+item37. ordinal 인덱싱 대신 EnumMap을 사용하라.
+
+이따금 배열이나 리스트에서 원소를 꺼낼 때 ordinal 메서드로 인덱스를 얻는 코드가 있다.
+class Plant {
+  enum LifeCycle { ANNUAL, PERENNIAL, BIENNIAL }
+  final String name;
+  final LifeCycle lifeCycle;
+
+  Plant(String name, LifeCycle lifeCycle) {
+    this.name = name;
+    this.lifeCycle = lifeCyle;
+  }
+
+  @Override public String toString() {
+    return name;
+  }
+}
+
+- 가장 심각한 문제는 정확한 정숫값을 사용한다는 것을 여러분이 직접 보증해야 한다는 점이다.
+정수는 열거 타입과 달리 타입 안전하지 않기 때문이다. 
+- 열거 타입을 키로 사용하돌고 설계한 아주 빠른 Map 구현체가 존재하는데, 바로 EnumMap이 그 주인공이다. 
+  
