@@ -1,0 +1,35 @@
+item36. 비트 필드 대신 EnumSet을 사용하라.
+
+java.util 패키지의 EnumSet 클래스는 열거 타입 상수의 값으로 구성된 집합을 효과적으로 표현해준다. 
+Set 인터페이스를 완벽히 구현하며, 타입 안전하고, 다른 어떤 Set 구현체와도 함께 사용할 수 있다. 
+하지만 EnumSet의 내부는 비트 벡터로 구현되어 있다. 
+원소가 총 64개 이하라면, 즉 대부분의 경우에 EnumSet 전체를 long 변수 하나로 표현하여 비트 필드에 비견되는 성능을 보여준다.
+
+removeAll과 retainAll 같은 대량 작업은 (비트 필드를 사용할 때 쓰는 것과 같은) 비트를 효율적으로 처리할 수 있는 산술 연산을 써서 구현했다.
+그러면서도 비트를 직접 다룰 때 흔히 겪는 오류들에서 해방된다. 난해한 작업을 EnumSet이 다 처리해주기 때문이다.
+앞의 예를 열거 타입과 EnumSet을 사용해 수정해보았다. 보다시피 짧고 깔끔하고 안전하다.
+
+public class Text {
+    public enum Style { BOLD, ITALIC, UNDERLINE, STRIKETHROUGH }
+    public void applyStyle(Set<Style> styles) {
+
+    }
+
+    public static void main(String[] args) {
+        Text text = new Text();
+        text.applyStyle(EnumSet.of(Style.BOLD, Style.ITALIC));
+    }
+}
+
+applyStyles 메서드가 EnumSet<Style>이 아닌 Set<Style>을 받은 이유를 생각해보자. 
+모든 클라이언트가 EnumSet을 건네리라 짐작되는 상황이라도 이왕이면 인터페이스로 받는 게 일반적으로 좋은 습관이다.
+이렇게 하면 좀 특이한 클라이언트가 다른 Set 구현체를 넘기더라도 처리할 수 있으니 말이다.
+
+[핵심 정리]
+열거할 수 있는 타입을 한데 모아 집합 형태로 사용한다고 해도 비트 필드를 사용할 이유는 없다. 
+EnumSet 클래스가 비트 필드 수준의 명료함과 성능을 제공하고 아이템 34에서 설명한 열거 타입의 장점까지 선사하기 때문이다.
+EnumSet의 유일한 단점이라면 (자바 9까지는 아직) 불변 EnumSet을 만들 수 없다는 것이다. 그래도 향후 릴리스에서는 수정되리라 본다.
+그때까지는 (명확성과 성능이 조금 희생되지만) Collections.unmodifiableSet으로 EnumSet을 감싸 사용할 수 있다. 
+-> 자바11까지도 이 수정은 이뤄지지 않았다. 
+조슈아 블로크의 바람과 달리 자바 개발팀은 불변 EnumSet이 그리 필요하지 않다고 보는 것 같다. 
+구글의 구아바 라이브러리를 사용하면 EnumSet을 만들 수 있긴 하지만, 이 역시 내부에서는 EnumSet을 사용해 구현했으므로 성능 면에서는 손해다. 
