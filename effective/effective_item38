@@ -1,0 +1,10 @@
+item38. 확장할 수 있는 열거 타입이 필요하면 인터페이스를 사용하라.
+
+public static void main(String[] args){
+  test(Arrays.asList(ExtendedOperation.values()), x, y);  
+}
+
+private static void test(Collections<? extends Operation> opSet, double x, double y) {
+  for(Operation op : opSet) 
+    System.out.printf("
+}
