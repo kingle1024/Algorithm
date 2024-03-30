@@ -21,7 +21,7 @@ public class BOK_25206 {
             double d = Double.parseDouble(st.nextToken());
             // 과목평점
             String grade = st.nextToken();
-            if("P".equals(grade) || "F".equals(grade)) {
+            if("P".equals(grade)) {
                 continue;
             }
             sum += d * getGradeNumber(grade);
@@ -58,6 +58,9 @@ public class BOK_25206 {
             }
             case "D0": {
                 return 1.0;
+            }
+            case "F": {
+                return 0.0;
             }
         }
         return -999991;
