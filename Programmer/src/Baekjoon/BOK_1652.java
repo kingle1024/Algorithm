@@ -12,15 +12,19 @@ public class BOK_1652 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(br.readLine());
-        if(n == 1) {
-            bw.write("0 0\n");
-        }
+
         char[][] arr = new char[n][n];
         for (int i = 0; i < n; i++) {
             String str = br.readLine();
             for (int j = 0; j < str.length(); j++) {
                 arr[i][j] = str.charAt(j);
             }
+        }
+        if(n == 1) {
+            bw.write("0 0\n");
+            bw.flush();
+            bw.close();
+            return;
         }
 
         int resultRowCnt = 0;
@@ -35,6 +39,8 @@ public class BOK_1652 {
                         resultRowCnt += 1;
                         isRow = true;
                     }
+                } else {
+                    isRow = false;
                 }
 
                 if (arr[j][i] == '.' && arr[j+1][i] == '.') {
@@ -42,6 +48,8 @@ public class BOK_1652 {
                         resultColCnt += 1;
                         isCol = true;
                     }
+                } else {
+                    isCol = false;
                 }
             }
         }
@@ -52,10 +60,4 @@ public class BOK_1652 {
         bw.flush();
         bw.close();
     }
-}
-
-    public static void main(String[] args) throws IOException {
-        solution();
-    }
-
 }
