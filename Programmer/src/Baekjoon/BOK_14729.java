@@ -5,7 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.PriorityQueue;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class BOK_14729 {
@@ -21,19 +21,45 @@ public class BOK_14729 {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
-        PriorityQueue<Double> pq = new PriorityQueue<>();
+        double[] arr = new double[7];
         for (int i = 0; i < N; i++) {
+            arr[i] = Double.parseDouble(br.readLine());
+        }
+        Arrays.sort(arr);
+
+        // 2 4 5 6 7 8 9
+        for (int i = 0; i < N-7; i++) {
             double d = Double.parseDouble(br.readLine());
-            if(pq.size() < 7) {
-                pq.add(d);
-            } else if(d <= pq.peek()) {
-                pq.poll();
-                pq.add(d);
+            for (int j = 7; j >= 0; j--) {
+                if(arr[j] < d) {
+
+                }
             }
         }
 
-        for(int i = 1; i <= 7; i++) {
-            bw.write(String.format("%.3f", pq.poll()) + "\n");
+        for (int i = 0; i < N; i++) {
+            double d = Double.parseDouble(br.readLine());
+            for (int j = 0; j < 8; j++) {
+                if(arr[j] == null) {
+                    arr[j] = d;
+                    break;
+                } else if(arr[j] > d) {
+                    if(arr[j+1] == null) {
+                        arr[j+1] = arr[j];
+                        arr[j] = d;
+                    } else {
+                        double temp = arr[j + 1];
+                        arr[j + 1] = arr[j];
+                        arr[j] = d;
+                        arr[j + 2] = temp;
+                    }
+                    break;
+                }
+            }
+        }
+
+        for(int i = 0; i < 7; i++) {
+            bw.write(String.format("%.3f", arr[i]) + "\n");
         }
 
         bw.flush();
