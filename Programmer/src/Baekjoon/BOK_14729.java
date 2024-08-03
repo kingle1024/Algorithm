@@ -21,43 +21,31 @@ public class BOK_14729 {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
-        double[] arr = new double[7];
-        for (int i = 0; i < N; i++) {
+        double[] arr = new double[9]; // 8 보다 1 더 큰 9로 선언
+        for (int i = 0; i < 8; i++) {
             arr[i] = Double.parseDouble(br.readLine());
         }
+        Arrays.fill(arr, 8, arr.length, 9999);
         Arrays.sort(arr);
 
-        // 2 4 5 6 7 8 9
-        for (int i = 0; i < N-7; i++) {
+        for (int i = 0; i < N-8; i++) {
             double d = Double.parseDouble(br.readLine());
-            for (int j = 7; j >= 0; j--) {
-                if(arr[j] < d) {
 
-                }
-            }
-        }
-
-        for (int i = 0; i < N; i++) {
-            double d = Double.parseDouble(br.readLine());
-            for (int j = 0; j < 8; j++) {
-                if(arr[j] == null) {
+            // 앞에서부터 순회
+            for (int j = 0; j < 7; j++) {
+                if(arr[j] >= d) {
+                    // 한칸씩 뒤로 미룸
+                    for (int k = 7; k >= j; k--) {
+                        arr[k+1] = arr[k];
+                    }
                     arr[j] = d;
                     break;
-                } else if(arr[j] > d) {
-                    if(arr[j+1] == null) {
-                        arr[j+1] = arr[j];
-                        arr[j] = d;
-                    } else {
-                        double temp = arr[j + 1];
-                        arr[j + 1] = arr[j];
-                        arr[j] = d;
-                        arr[j + 2] = temp;
-                    }
-                    break;
                 }
+
             }
         }
 
+        // 포맷에 맞게 출력
         for(int i = 0; i < 7; i++) {
             bw.write(String.format("%.3f", arr[i]) + "\n");
         }
