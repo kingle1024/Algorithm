@@ -1,41 +1,39 @@
 package Baekjoon;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Calendar;
+import java.io.OutputStreamWriter;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.StringTokenizer;
 
 public class BOK_1308 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int sYear = Integer.parseInt(st.nextToken());
-        int sMonth = Integer.parseInt(st.nextToken());
-        int sDay = Integer.parseInt(st.nextToken());
+        int year = Integer.parseInt(st.nextToken());
+        int month = Integer.parseInt(st.nextToken());
+        int day = Integer.parseInt(st.nextToken());
+        LocalDate startDate = LocalDate.of(year, month, day);
 
         st = new StringTokenizer(br.readLine());
-        int eYear = Integer.parseInt(st.nextToken());
-        int eMonth = Integer.parseInt(st.nextToken());
-        int eDay = Integer.parseInt(st.nextToken());
+        int year2 = Integer.parseInt(st.nextToken());
+        int month2 = Integer.parseInt(st.nextToken());
+        int day2 = Integer.parseInt(st.nextToken());
+        LocalDate endDate = LocalDate.of(year2, month2, day2);
+        long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
 
-        // 날짜 설정하기
-        Calendar cal = Calendar.getInstance();
-        // month에 1을 더해야한다.
-        cal.set(sYear,  sMonth, sDay);
-        long dDay = cal.getTimeInMillis();
-
-        Calendar cal2 = Calendar.getInstance();
-        cal2.set(eYear, eMonth, eDay);
-        long now = cal2.getTimeInMillis();
-
-        long result = dDay - now;
-        long d = Math.abs(result / 1000 / 60 / 60 / 24);
-
-        if(d >= 365242){
-            System.out.println("gg");
-        }else {
-            System.out.println("D" + d);
+        if (year2 - year > 1000 || (year2 - year == 1000 && (month2 > month || (month2 == month && day2 >= day)))) {
+            bw.write("gg");
+        } else {
+            bw.write("D-" +Math.abs(daysBetween));
         }
+
+        bw.flush();
+        bw.close();
     }
 }
