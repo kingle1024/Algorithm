@@ -1,5 +1,4 @@
-package com.douzone.comet.batch.bm;
-
+import Baekjoon;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -20,20 +19,42 @@ public class BOK_12871 {
         String s = br.readLine();
         String t = br.readLine();
 
-        String s1 = t.replaceAll(s, "");
+        int sLength = s.length();
+        int tLength = t.length();
+        int lcm = lcm(sLength, tLength);
 
-        if(s1.isEmpty()) {
+        StringBuilder sSb = getStringBuilder(lcm, sLength, s);
+        StringBuilder tSb = getStringBuilder(lcm, tLength, t);
+
+        if(sSb.toString().contentEquals(tSb)) {
             bw.write("1");
         } else {
-            if(s.replaceAll(t, "").isEmpty()) {
-                bw.write("0");
-            } else {
-                bw.write("1");
-            }
+            bw.write("0");
         }
 
         bw.flush();
         bw.close();
         br.close();
+    }
+
+    public static int gcd(int a, int b) {
+        while(b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+    public static int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
+    }
+
+    private static StringBuilder getStringBuilder(int lcm, int sLength, String s) {
+        StringBuilder sSb = new StringBuilder();
+        int sLcm = lcm / sLength;
+        for (int i = 0; i < sLcm; i++) {
+            sSb.append(s);
+        }
+        return sSb;
     }
 }
