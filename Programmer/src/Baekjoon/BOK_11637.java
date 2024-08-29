@@ -24,35 +24,26 @@ public class BOK_11637 {
         int T = Integer.parseInt(br.readLine());
         for (int i = 0; i < T; i++) {
             int n = Integer.parseInt(br.readLine());
-            List<Integer> l = new ArrayList<>();
+            List<Integer> votes = new ArrayList<>();
             int sum = 0;
+
             for (int j = 0; j < n; j++) {
                 int num = Integer.parseInt(br.readLine());
-                l.add(num);
+                votes.add(num);
                 sum += num;
             }
-            List<Integer> origin = new ArrayList<>(l);
-            Collections.sort(l);
-            if(Objects.equals(l.get(l.size() - 1), l.get(l.size() - 2))) {
+
+            // 정렬된 투표 리스트 생성
+            List<Integer> sortedVotes = new ArrayList<>(votes);
+            Collections.sort(sortedVotes);
+
+            if (sortedVotes.get(sortedVotes.size() - 1).equals(sortedVotes.get(sortedVotes.size() - 2))) {
                 bw.write("no winner\n");
             } else {
-                // 과반수인 경우
-                if(l.get(l.size()-1) > sum / 2) {
-
-                    for(int j = 0; j < l.size(); j++) {
-                        if(Objects.equals(origin.get(j), l.get(l.size() - 1))) {
-                            bw.write("majority winner " + (j+1) + "\n");
-                            break;
-                        }
-                    }
-                } else {
-                    for(int j = 0; j < l.size(); j++) {
-                        if(Objects.equals(origin.get(j), l.get(l.size() - 1))) {
-                            bw.write("minority winner " + (j+1) + "\n");
-                            break;
-                        }
-                    }
-                }
+                int winnerValue = sortedVotes.get(sortedVotes.size() - 1);
+                int winnerIndex = votes.indexOf(winnerValue);
+                String winnerType = (winnerValue > sum / 2) ? "majority" : "minority";
+                bw.write(winnerType + " winner " + (winnerIndex + 1) + "\n");
             }
         }
 
