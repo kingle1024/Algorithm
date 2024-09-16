@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
-public class BOK_17219 {
+public class BOK_1244 {
 
-    // 17219
+    // 1244
     public static void main(String[] args) throws IOException {
         process();
     }
